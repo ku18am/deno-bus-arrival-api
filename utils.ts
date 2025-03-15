@@ -1,6 +1,8 @@
 import { difference } from "@std/datetime";
 
 export const diff = (t: string) => {
+  if (!t) return "N/A";
+
   const now = new Date();
   const f = new Date(t);
   const mins = difference(now, f).minutes;
