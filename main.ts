@@ -6,6 +6,11 @@ router
   .get("/", (context) => {
     context.response.body = `${Deno.env.get("Datamall_Base_URL")}`;
   })
+  .post("/bot", async (context) => {
+    const body = await context.request.body.json();
+    console.log(body);
+    context.response.status = 200;
+  })
   .get("/bus-arrival", async (context) => {
     const busStopCode = context.request.url.searchParams.get("BusStopCode");
     if (busStopCode) {
