@@ -1,4 +1,4 @@
-import { Application, Router } from "https://deno.land/x/oak/mod.ts";
+import { Application, Router } from "@oak/oak";
 import { getBusArrival } from "./api.ts";
 
 const router = new Router();
@@ -6,9 +6,13 @@ router
   .get("/", (context) => {
     context.response.body = `${Deno.env.get("Datamall_Base_URL")}`;
   })
-  .get("/bus-arrival/:BusStopCode", async (context) => {
-    if (context?.params?.BusStopCode) {
-      context.response.body = await getBusArrival(context.params.BusStopCode);
+  .get("/bus-arrival", async (context) => {
+    const busStopCode = context.request.url.searchParams.get("BusStopCode");
+    if (busStopCode) {
+      context.response.body = await getBusArrival(busStopCode);
+    } else {
+      context.response.status = 400;
+      context.response.body = "Invalid BusStopCode";
     }
   });
 
