@@ -2,6 +2,7 @@
   "version": "4",
   "specifiers": {
     "jsr:@oak/commons@1": "1.0.0",
+    "jsr:@oak/oak@^17.1.4": "17.1.4",
     "jsr:@std/assert@1": "1.0.6",
     "jsr:@std/bytes@1": "1.0.3",
     "jsr:@std/bytes@^1.0.2": "1.0.3",
@@ -15,7 +16,8 @@
     "jsr:@std/media-types@1": "1.0.3",
     "jsr:@std/path@1": "1.0.8",
     "npm:@types/node@*": "22.9.0",
-    "npm:path-to-regexp@6.2.1": "6.2.1"
+    "npm:path-to-regexp@6.2.1": "6.2.1",
+    "npm:path-to-regexp@^6.3.0": "6.3.0"
   },
   "jsr": {
     "@oak/commons@1.0.0": {
@@ -27,6 +29,18 @@
         "jsr:@std/encoding@1",
         "jsr:@std/http",
         "jsr:@std/media-types"
+      ]
+    },
+    "@oak/oak@17.1.4": {
+      "integrity": "60530b582bf276ff741e39cc664026781aa08dd5f2bc5134d756cc427bf2c13e",
+      "dependencies": [
+        "jsr:@oak/commons",
+        "jsr:@std/assert",
+        "jsr:@std/bytes@1",
+        "jsr:@std/http",
+        "jsr:@std/media-types",
+        "jsr:@std/path",
+        "npm:path-to-regexp@^6.3.0"
       ]
     },
     "@std/assert@1.0.6": {
@@ -79,6 +93,9 @@
     "path-to-regexp@6.2.1": {
       "integrity": "sha512-JLyh7xT1kizaEvcaXOQwOc2/Yhw6KZOvPf1S8401UyLk86CU79LN3vl7ztXGm/pZ+YjoyAJ4rxmHwbkBXJX+yw=="
     },
+    "path-to-regexp@6.3.0": {
+      "integrity": "sha512-Yhpw4T9C6hPpgPeA28us07OJeqZ5EzQTkbfwuhsUg0c237RomFoETJgmp2sa3F/41gfLE6G5cqcYwznmeEeOlQ=="
+    },
     "undici-types@6.19.8": {
       "integrity": "sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw=="
     }
@@ -120,6 +137,7 @@
   },
   "workspace": {
     "dependencies": [
+      "jsr:@oak/oak@^17.1.4",
       "jsr:@std/assert@1",
       "jsr:@std/datetime@~0.225.3"
     ]
