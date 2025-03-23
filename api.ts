@@ -11,13 +11,15 @@ export const getBusArrival = async (BusStopCode: string) => {
     headers: { AccountKey },
   });
   const { Services } = await response.json();
-  const times = Services.map((s) => ({
-    [`${s.ServiceNo}`]: [
+  const times = {};
+
+  Services.forEach((s) => {
+    times[`${s.ServiceNo}`] = [
       diff(s.NextBus.EstimatedArrival),
       diff(s?.NextBus2?.EstimatedArrival),
       diff(s?.NextBus3?.EstimatedArrival),
-    ],
-  }));
+    ];
+  });
 
   return times;
 };
