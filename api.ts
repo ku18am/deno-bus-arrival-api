@@ -21,3 +21,12 @@ export const getBusArrival = async (BusStopCode: string) => {
 
   return times;
 };
+
+export const getBusStops = async () => {
+  const response = await fetch(`${API_BASE_URL}/BusStops?`, {
+    headers: { AccountKey },
+  });
+  const { value: busStops } = await response.json() ?? [];
+
+  return busStops;
+};

@@ -1,5 +1,7 @@
 import { Application, Router } from "@oak/oak";
 import { getBusArrival } from "./api.ts";
+import { isValidBusStopCode } from "./utils.ts";
+import { sendMessage } from "./bot.ts";
 
 const router = new Router();
 router
@@ -8,7 +10,12 @@ router
   })
   .post("/bot", async (context) => {
     const body = await context.request.body.json();
-    console.log(body);
+    const { message: { chat: { id: chat_id }, text } } = body;
+    if (isValidBusStopCode(text)) {
+      const replyText = await getBusArrival(text);
+      await sendMessage(chat_id, replyText);
+    }
+
     context.response.status = 200;
   })
   .get("/bus-arrival", async (context) => {

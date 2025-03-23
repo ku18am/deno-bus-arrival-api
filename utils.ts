@@ -8,3 +8,5 @@ export const diff = (t: string) => {
   const mins = difference(now, f).minutes;
   return mins === 0 ? "Arr" : `${mins} min`;
 };
+
+export const isValidBusStopCode = (bsc: string) => bsc.match(/^\d{5}$/);
