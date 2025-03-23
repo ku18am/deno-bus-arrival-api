@@ -7,7 +7,7 @@ export const getBusArrival = async (BusStopCode: string) => {
   const q = new URLSearchParams({
     BusStopCode,
   });
-  const response = await fetch(`${API_BASE_URL}/BusArrival?${q}`, {
+  const response = await fetch(`${API_BASE_URL}/v3/BusArrival?${q}`, {
     headers: { AccountKey },
   });
   const { Services } = await response.json();
